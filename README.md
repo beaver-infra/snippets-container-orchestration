@@ -1,30 +1,24 @@
 # Snippets Container Orchestration
 
-```console
-kubectl apply -f k8s_postgres
-```
-### Deployment
+## Env Setup
 
-1. replicas
-2. selector
-3. template
-
-### Service
-
-1. type: NodePort / ClusterIP
-
-### Persistent Volume Claim
-
-1. accessmodes
-2. resources > requests > storage
-
-
-## Secrets
-
+Setup Postgres
 ```console
 kubectl create secret generic pgpassword --from-literal PGPASSWORD=postgres
-```
-
-```console
 kubectl apply -f k8s_postgres
 ```
+
+Setup Redis
+```console
+kubectl apply -f k8s_redis
+```
+
+Setup Py REST API v1.1.5 (docker image)
+```console
+kubectl apply -f k8s_pyrest
+```
+
+### Diagram
+
+![Implementation Example](diagrams/k8s_setup.drawio.png)
+
