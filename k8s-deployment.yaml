@@ -15,5 +15,23 @@ spec:
             containers:
                 - name: pyrest  # Name of the container
                   image: hegdeashwin3/template-py-rest-microservice:1.1.5  # Docker image for the container
+                  env:
+                    - name: REDIS_HOST
+                      value: redis-cluster-ip-service
+                    - name: REDIS_PORT
+                      value: "6379"
+                    - name: PGUSER
+                      value: portgres
+                    - name: PGHOST
+                      value: postgres-cluster-ip-service
+                    - name: PGPORT
+                      value: "5432"
+                    - name: PGDATABASE
+                      value: postgres
+                    - name: PGPASSWORD
+                      valueFrom:
+                        secretKeyRef:
+                          name: pgpassword
+                          key: PGPASSWORD
                   ports:
                     - containerPort: 3000  # Port on which the container listens
